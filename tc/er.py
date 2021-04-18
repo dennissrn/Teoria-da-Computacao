@@ -57,3 +57,19 @@ def printw(expreg):
             
         else:    
             return "".join(str(expreg[-1]) + str(operator))
+        
+
+# 16) Transformação AF para ER (2)
+# Dennis Rodrigues
+
+# Pega estados posteriores ao estado passado.
+def afn2er_pi(automato, estado):
+    values = list(automato[2].values())
+    num = 0
+    posterior = set()
+
+    for funcao in automato[2]:
+        if estado in funcao and values[num] != estado:
+            posterior.add(values[num])
+        num += 1
+    return posterior
